@@ -2,11 +2,11 @@ from typing import Any, Union, Callable
 
 from grid_universe.state import State
 from grid_universe.gym_env import GridUniverseEnv, Observation
-from grid_universe.renderer.texture import TextureMap, DEFAULT_RESOLUTION
+from grid_universe.renderer.image import ImageMap, DEFAULT_RESOLUTION
 from grid_universe.levels.grid import Level
 
 from grid_adventure.level import from_state
-from grid_adventure.rendering import DEFAULT_ASSET_ROOT, TEXTURE_MAP
+from grid_adventure.rendering import DEFAULT_ASSET_ROOT, IMAGE_MAP
 
 
 class GridAdventureEnv(GridUniverseEnv):
@@ -21,7 +21,7 @@ class GridAdventureEnv(GridUniverseEnv):
         initial_state_fn: Callable[..., State],
         render_mode: str = "rgb_array",
         render_resolution: int = DEFAULT_RESOLUTION,
-        render_texture_map: TextureMap = TEXTURE_MAP,
+        render_image_map: ImageMap = IMAGE_MAP,
         render_asset_root: str = DEFAULT_ASSET_ROOT,
         observation_type: str = "image",
         **kwargs: Any,
@@ -30,7 +30,7 @@ class GridAdventureEnv(GridUniverseEnv):
             initial_state_fn=initial_state_fn,
             render_mode=render_mode,
             render_resolution=render_resolution,
-            render_texture_map=render_texture_map,
+            render_image_map=render_image_map,
             render_asset_root=render_asset_root,
             observation_type=observation_type,
             **kwargs,

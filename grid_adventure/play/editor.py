@@ -5,12 +5,12 @@ from typing import Any, Callable
 import streamlit as st
 
 from grid_universe.state import State
-from grid_universe.renderer.texture import TextureMap
+from grid_universe.renderer.image import ImageMap
 
 from grid_adventure.env import GridAdventureEnv
 from grid_adventure.objectives import objectives
 from grid_adventure.moves import moves
-from grid_adventure.rendering import TEXTURE_MAP, DEFAULT_ASSET_ROOT
+from grid_adventure.rendering import IMAGE_MAP, DEFAULT_ASSET_ROOT
 from grid_adventure.entities import (
     FloorEntity,
     WallEntity,
@@ -159,12 +159,12 @@ PALETTE: dict[str, ToolSpec] = {
 # -----------------------
 
 
-def _asset_root_resolver(texture_map: TextureMap) -> str:
+def _asset_root_resolver(image_map: ImageMap) -> str:
     return DEFAULT_ASSET_ROOT
 
 
 def _env_factory(
-    initial_state_fn: Callable[..., State], texture_map: TextureMap
+    initial_state_fn: Callable[..., State], image_map: ImageMap
 ) -> GridAdventureEnv:
     sample_state = initial_state_fn()
     return GridAdventureEnv(
@@ -172,7 +172,7 @@ def _env_factory(
         initial_state_fn=initial_state_fn,
         width=sample_state.width,
         height=sample_state.height,
-        render_texture_map=texture_map,
+        render_image_map=image_map,
     )
 
 
@@ -184,7 +184,7 @@ register_level_source(
     make_level_editor_source(
         name="Grid Adventure Level Editor",
         palette=PALETTE,
-        texture_maps=[TEXTURE_MAP],
+        image_maps=[IMAGE_MAP],
         env_factory=_env_factory,
         move_fn_registry=moves,
         objective_fn_registry=objectives,
