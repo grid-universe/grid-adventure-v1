@@ -1,4 +1,5 @@
-from typing import Any, Union, Callable
+from collections.abc import Callable
+from typing import Any
 
 from grid_universe.state import State
 from grid_universe.gym_env import GridUniverseEnv, Observation
@@ -36,7 +37,7 @@ class GridAdventureEnv(GridUniverseEnv):
             **kwargs,
         )
 
-    def _get_obs(self) -> Union[Observation, Level]:
+    def _get_obs(self) -> Observation | Level:
         """
         Get the current observation from the environment. If the observation type is 'level',
         return a specialized Level view; otherwise, return the standard observation.

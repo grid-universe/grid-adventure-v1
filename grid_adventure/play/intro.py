@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Callable
+from collections.abc import Callable
 
 from grid_universe.state import State
 from grid_universe.renderer.image import ImageMap

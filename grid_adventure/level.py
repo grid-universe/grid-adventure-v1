@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-from typing import Dict, List
-
 from grid_universe.state import State
 from grid_universe.levels.grid import Level
 from grid_universe.levels.convert import from_state as base_from_state
@@ -107,7 +105,7 @@ def _specialize_single(obj: BaseEntity) -> BaseEntity:
     return obj
 
 
-def _specialize_nested_list(items: List[BaseEntity] | None) -> List[BaseEntity]:
+def _specialize_nested_list(items: list[BaseEntity] | None) -> list[BaseEntity]:
     """Specialize nested inventory/status entity lists."""
     if not items:
         return []
@@ -134,10 +132,10 @@ def specialize_entities(level: Level) -> Level:
     )
 
     # First pass: specialize and map original object id -> new specialized object
-    obj_map: Dict[int, BaseEntity] = {}
+    obj_map: dict[int, BaseEntity] = {}
     for y in range(level.height):
         for x in range(level.width):
-            specialized_cell: List[BaseEntity] = []
+            specialized_cell: list[BaseEntity] = []
             for orig_obj in level.grid[y][x]:
                 spec_obj = _specialize_single(orig_obj)
 
