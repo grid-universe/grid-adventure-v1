@@ -191,7 +191,7 @@ def build_level_hazard_detour(seed: int = 106) -> Level:
     for y in range(2, h - 2):
         if y != h // 2:
             level.add((w - 3, y), WallEntity())
-    
+
     return level
 
 
@@ -330,12 +330,13 @@ def build_level_capstone_simple(seed: int = 113) -> Level:
 
     return level
 
+
 def build_level_capstone_advanced(seed: int = 113) -> Level:
     level = Level(
         width=7,
         height=7,
-        move_fn=cardinal_move_fn,
-        objective_fn=collect_and_exit_objective_fn,
+        movement=MOVEMENTS["cardinal"],
+        objective=OBJECTIVES["collect_gems_and_exit"],
         seed=seed,
         turn_limit=TURN_LIMIT,
     )
@@ -348,11 +349,20 @@ def build_level_capstone_advanced(seed: int = 113) -> Level:
     # Walls
     wall_pos = [
         (3, 0),
-        (0, 1), (1, 1), (3, 1), (5, 1),
-        (3, 2), (5, 2),
+        (0, 1),
+        (1, 1),
+        (3, 1),
+        (5, 1),
+        (3, 2),
+        (5, 2),
         (1, 3),
-        (1, 4), (3, 4), (5, 4),
-        (1, 5), (2, 5), (3, 5), (5, 5),
+        (1, 4),
+        (3, 4),
+        (5, 4),
+        (1, 5),
+        (2, 5),
+        (3, 5),
+        (5, 5),
     ]
     for p in wall_pos:
         level.add(p, WallEntity())
@@ -365,12 +375,7 @@ def build_level_capstone_advanced(seed: int = 113) -> Level:
     level.add((6, 3), GemEntity())
 
     # Coins
-    coin_pos = [
-        (1, 2), (4, 2),
-        (3, 3),
-        (6, 5),
-        (2, 6), (3, 6)
-    ]
+    coin_pos = [(1, 2), (4, 2), (3, 3), (6, 5), (2, 6), (3, 6)]
     for p in coin_pos:
         level.add(p, CoinEntity())
 
