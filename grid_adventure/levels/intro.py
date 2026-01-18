@@ -1,6 +1,6 @@
 from grid_universe.levels.grid import Level
-from grid_adventure.moves import cardinal_move_fn
-from grid_adventure.objectives import collect_and_exit_objective_fn, exit_objective_fn
+from grid_adventure.movements import MOVEMENTS
+from grid_adventure.objectives import OBJECTIVES
 from grid_adventure.entities import (
     create_agent_entity,
     FloorEntity,
@@ -41,8 +41,8 @@ def build_level_basic_movement(seed: int = 100) -> Level:
     level = Level(
         w,
         h,
-        move_fn=cardinal_move_fn,
-        objective_fn=exit_objective_fn,
+        movement=MOVEMENTS["cardinal"],
+        objective=OBJECTIVES["collect_gems_and_exit"],
         seed=seed,
         turn_limit=TURN_LIMIT,
     )
@@ -60,8 +60,8 @@ def build_level_maze_turns(seed: int = 101) -> Level:
     level = Level(
         w,
         h,
-        move_fn=cardinal_move_fn,
-        objective_fn=exit_objective_fn,
+        movement=MOVEMENTS["cardinal"],
+        objective=OBJECTIVES["collect_gems_and_exit"],
         seed=seed,
         turn_limit=TURN_LIMIT,
     )
@@ -82,8 +82,8 @@ def build_level_optional_coin(seed: int = 102) -> Level:
     level = Level(
         w,
         h,
-        move_fn=cardinal_move_fn,
-        objective_fn=exit_objective_fn,
+        movement=MOVEMENTS["cardinal"],
+        objective=OBJECTIVES["collect_gems_and_exit"],
         seed=seed,
         turn_limit=TURN_LIMIT,
     )
@@ -108,8 +108,8 @@ def build_level_required_one(seed: int = 103) -> Level:
     level = Level(
         w,
         h,
-        move_fn=cardinal_move_fn,
-        objective_fn=collect_and_exit_objective_fn,
+        movement=MOVEMENTS["cardinal"],
+        objective=OBJECTIVES["collect_gems_and_exit"],
         seed=seed,
         turn_limit=TURN_LIMIT,
     )
@@ -129,8 +129,8 @@ def build_level_required_two(seed: int = 104) -> Level:
     level = Level(
         w,
         h,
-        move_fn=cardinal_move_fn,
-        objective_fn=collect_and_exit_objective_fn,
+        movement=MOVEMENTS["cardinal"],
+        objective=OBJECTIVES["collect_gems_and_exit"],
         seed=seed,
         turn_limit=TURN_LIMIT,
     )
@@ -153,8 +153,8 @@ def build_level_key_door(seed: int = 105) -> Level:
     level = Level(
         w,
         h,
-        move_fn=cardinal_move_fn,
-        objective_fn=exit_objective_fn,
+        movement=MOVEMENTS["cardinal"],
+        objective=OBJECTIVES["collect_gems_and_exit"],
         seed=seed,
         turn_limit=TURN_LIMIT,
     )
@@ -174,8 +174,8 @@ def build_level_hazard_detour(seed: int = 106) -> Level:
     level = Level(
         w,
         h,
-        move_fn=cardinal_move_fn,
-        objective_fn=exit_objective_fn,
+        movement=MOVEMENTS["cardinal"],
+        objective=OBJECTIVES["collect_gems_and_exit"],
         seed=seed,
         turn_limit=TURN_LIMIT,
     )
@@ -200,8 +200,8 @@ def build_level_pushable_box(seed: int = 108) -> Level:
     level = Level(
         w,
         h,
-        move_fn=cardinal_move_fn,
-        objective_fn=exit_objective_fn,
+        movement=MOVEMENTS["cardinal"],
+        objective=OBJECTIVES["collect_gems_and_exit"],
         seed=seed,
         turn_limit=TURN_LIMIT,
     )
@@ -220,8 +220,8 @@ def build_level_power_shield(seed: int = 110) -> Level:
     level = Level(
         w,
         h,
-        move_fn=cardinal_move_fn,
-        objective_fn=exit_objective_fn,
+        movement=MOVEMENTS["cardinal"],
+        objective=OBJECTIVES["collect_gems_and_exit"],
         seed=seed,
         turn_limit=TURN_LIMIT,
     )
@@ -241,8 +241,8 @@ def build_level_power_ghost(seed: int = 111) -> Level:
     level = Level(
         w,
         h,
-        move_fn=cardinal_move_fn,
-        objective_fn=exit_objective_fn,
+        movement=MOVEMENTS["cardinal"],
+        objective=OBJECTIVES["collect_gems_and_exit"],
         seed=seed,
         turn_limit=TURN_LIMIT,
     )
@@ -260,8 +260,8 @@ def build_level_power_boots(seed: int = 112) -> Level:
     level = Level(
         w,
         h,
-        move_fn=cardinal_move_fn,
-        objective_fn=exit_objective_fn,
+        movement=MOVEMENTS["cardinal"],
+        objective=OBJECTIVES["collect_gems_and_exit"],
         seed=seed,
         turn_limit=TURN_LIMIT,
     )
@@ -281,8 +281,8 @@ def build_level_capstone_simple(seed: int = 113) -> Level:
     level = Level(
         width=7,
         height=7,
-        move_fn=cardinal_move_fn,
-        objective_fn=exit_objective_fn,
+        movement=MOVEMENTS["cardinal"],
+        objective=OBJECTIVES["collect_gems_and_exit"],
         seed=seed,
         turn_limit=TURN_LIMIT,
     )

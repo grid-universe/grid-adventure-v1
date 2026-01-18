@@ -8,7 +8,7 @@ Navigate grid-based levels, collect coins and keys, avoid hazards and enemies, a
 
 ```bash
 pip install -e .
-pip install -e ".[test]"  # Includes grid-play for running the game
+pip install -e ".[play]"  # Includes grid-play for playing the game
 ```
 
 Requires Python 3.11+.

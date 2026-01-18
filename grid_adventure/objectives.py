@@ -1,12 +1,16 @@
 """Objective functions for Grid Adventure environments."""
 
-from grid_universe.objectives import (
-    collect_and_exit_objective_fn as collect_and_exit_objective_fn,
-)
-from grid_universe.objectives import exit_objective_fn as exit_objective_fn
+from dataclasses import dataclass
+from grid_universe.objectives import CollectAndExitObjective
 
 
-objectives = {
-    "collect_and_exit": collect_and_exit_objective_fn,
-    "exit": exit_objective_fn,
+@dataclass(frozen=True)
+class CollectGemsAndExitObjective(CollectAndExitObjective):
+    """Objective where the agent must collect all gems (if any) and then exit."""
+
+    description: str = "Collect all gems (if any) and reach an exit tile."
+
+
+OBJECTIVES = {
+    "collect_gems_and_exit": CollectGemsAndExitObjective(),
 }

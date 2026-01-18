@@ -82,7 +82,7 @@ def _specialize_single(obj: BaseEntity) -> BaseEntity:
             return copy_entity_components(obj, ShieldPowerUpEntity())
         if has("phasing"):
             return copy_entity_components(obj, PhasingPowerUpEntity())
-        # Gem/core vs coin
+        # Gem vs coin
         if app_name == "core" or has("requirable"):
             return copy_entity_components(obj, GemEntity())
         return copy_entity_components(obj, CoinEntity())
@@ -120,8 +120,8 @@ def specialize_entities(level: Level) -> Level:
     new_level = Level(
         width=level.width,
         height=level.height,
-        move_fn=level.move_fn,
-        objective_fn=level.objective_fn,
+        movement=level.movement,
+        objective=level.objective,
         seed=level.seed,
         turn=level.turn,
         score=level.score,

@@ -9,8 +9,8 @@ from grid_universe.state import State
 from grid_universe.renderer.image import ImageMap
 
 from grid_adventure.env import GridAdventureEnv
-from grid_adventure.objectives import objectives
-from grid_adventure.moves import moves
+from grid_adventure.objectives import OBJECTIVES
+from grid_adventure.movements import MOVEMENTS
 from grid_adventure.rendering import IMAGE_MAP, DEFAULT_ASSET_ROOT
 from grid_adventure.entities import (
     FloorEntity,
@@ -187,8 +187,8 @@ register_level_source(
         palette=PALETTE,
         image_maps=[IMAGE_MAP],
         env_factory=_env_factory,
-        move_fn_registry=moves,
-        objective_fn_registry=objectives,
+        movement_registry=MOVEMENTS,
+        objective_registry=OBJECTIVES,
         asset_root_resolver=_asset_root_resolver,
         env_class=GridAdventureEnv,
     )

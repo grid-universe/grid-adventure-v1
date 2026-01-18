@@ -17,6 +17,8 @@ from grid_universe.levels.factories import (
 )
 from grid_universe.components.properties.appearance import Appearance
 from grid_universe.levels.entity import Entity
+from grid_universe.movements import BaseMovement
+from grid_universe.objectives import BaseObjective
 
 from grid_adventure.level import specialize_entities, from_state
 from grid_adventure.entities import (
@@ -50,8 +52,12 @@ def test_specialize_every_entity_type():
     level = Level(
         width=10,
         height=10,
-        move_fn=lambda s, e, a: [],
-        objective_fn=lambda s, e: False,
+        movement=BaseMovement(
+            name="test", description="Test", function=lambda s, e, a: []
+        ),
+        objective=BaseObjective(
+            name="test", description="Test", functions=(lambda s, e: False,)
+        ),
         seed=123,
     )
 
@@ -217,8 +223,12 @@ def test_specialize_roundtrip_preserves_types_and_coordinates():
     level = Level(
         width=10,
         height=10,
-        move_fn=lambda s, e, a: [],
-        objective_fn=lambda s, e: False,
+        movement=BaseMovement(
+            name="test", description="Test", function=lambda s, e, a: []
+        ),
+        objective=BaseObjective(
+            name="test", description="Test", functions=(lambda s, e: False,)
+        ),
         seed=456,
     )
 
