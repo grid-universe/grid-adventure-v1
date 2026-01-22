@@ -174,14 +174,14 @@ def test_hazard_damage_reduces_health():
     level = intro.build_level_hazard_detour(seed=106)
     state = to_state(level)
     aid = _agent_id(state)
-    hp_before = state.health[aid].health
+    hp_before = state.health[aid].current_health
 
     # Walk into the lava tile in the middle corridor
     state = adv_step(state, Action.RIGHT)
     state = adv_step(state, Action.RIGHT)
     state = adv_step(state, Action.RIGHT)
 
-    hp_after = state.health[aid].health
+    hp_after = state.health[aid].current_health
     assert hp_after <= hp_before
 
 
@@ -297,13 +297,13 @@ def test_shield_blocks_damage():
     state = adv_step(state, Action.UP)
     state = adv_step(state, Action.PICK_UP)
 
-    hp_before = state.health[aid].health
+    hp_before = state.health[aid].current_health
 
     # Step into lava — shield should absorb
     state = adv_step(state, Action.RIGHT)
     state = adv_step(state, Action.RIGHT)
 
-    hp_after = state.health[aid].health
+    hp_after = state.health[aid].current_health
     assert hp_after == hp_before
 
 
