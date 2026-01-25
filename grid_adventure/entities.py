@@ -1,5 +1,5 @@
 from pyrsistent import pset
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 from grid_universe.components.effects.immunity import Immunity
 from grid_universe.components.effects.phasing import Phasing
@@ -72,6 +72,8 @@ class AgentEntity(CollidableEntity):
     )
     inventory: Inventory = Inventory(pset())
     status: Status = Status(pset())
+    inventory_list: list[BaseEntity] = field(default_factory=list[BaseEntity])
+    status_list: list[BaseEntity] = field(default_factory=list[BaseEntity])
 
     def set_health(self, health: int) -> None:
         """Set the health of the agent."""
