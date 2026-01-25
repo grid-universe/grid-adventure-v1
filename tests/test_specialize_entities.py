@@ -88,7 +88,9 @@ def test_specialize_every_entity_type():
     }
 
     # Populate
-    gridstate.add(coords["agent"], create_agent())
+    agent = create_agent()
+    agent.inventory_list = [create_key(key_id="INV"), create_core(required=True)]
+    gridstate.add(coords["agent"], agent)
     gridstate.add(coords["floor"], create_floor())
     gridstate.add(coords["wall"], create_wall())
     gridstate.add(coords["exit"], create_exit())
@@ -263,6 +265,18 @@ def test_specialize_every_entity_type():
     assert getattr(coin, "rewardable") is not None
     assert getattr(gem, "requirable") is not None
 
+    # Agent inventory/status components
+    agent = next(
+        obj for _, _, obj in _flatten(specialized) if isinstance(obj, AgentEntity)
+    )
+    assert getattr(agent, "inventory") is not None
+    assert getattr(agent, "status") is not None
+    assert hasattr(agent, "inventory_list")
+    inv_list = getattr(agent, "inventory_list", [])
+    assert len(inv_list) == 2
+    assert any(isinstance(item, KeyEntity) for item in inv_list)
+    assert any(isinstance(item, GemEntity) for item in inv_list)
+
 
 def test_specialize_roundtrip_preserves_types_and_coordinates():
     """Round‑trip through State -> Grid Adventure GridState should preserve specialization and coordinates."""
@@ -301,7 +315,9 @@ def test_specialize_roundtrip_preserves_types_and_coordinates():
     }
 
     # Populate objects
-    gridstate.add(coords["agent"], create_agent())
+    agent = create_agent()
+    agent.inventory_list = [create_key(key_id="INV"), create_core(required=True)]
+    gridstate.add(coords["agent"], agent)
     gridstate.add(coords["floor"], create_floor())
     gridstate.add(coords["wall"], create_wall())
     gridstate.add(coords["exit"], create_exit())
@@ -397,3 +413,19 @@ def test_specialize_roundtrip_preserves_types_and_coordinates():
     )
     assert getattr(moving_box, "moving") is not None
     assert getattr(box, "moving", None) is None
+
+    # Agent inventory/status components survive roundtrip
+    agent = next(
+        obj
+        for row in roundtrip_level.grid
+        for cell in row
+        for obj in cell
+        if isinstance(obj, AgentEntity)
+    )
+    assert getattr(agent, "inventory") is not None
+    assert getattr(agent, "status") is not None
+    assert hasattr(agent, "inventory_list")
+    inv_list = getattr(agent, "inventory_list", [])
+    assert len(inv_list) == 2
+    assert any(isinstance(item, KeyEntity) for item in inv_list)
+    assert any(isinstance(item, GemEntity) for item in inv_list)
