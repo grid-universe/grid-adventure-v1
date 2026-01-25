@@ -132,7 +132,6 @@ This is a collectible granting agent the ability to walk 2 tiles in 1 turn for a
 |speed|Speed Class|Speed class that saves multiplier, indicating speed up provided|
 |time_limit|TimeLimit Class|TimeLimit class that saves amount, indicating number of turns powerup is active|
 
-Note: Speed multiplier is a constant at 2.
 Note: Time limit is a constant at 5 steps.
 
 &nbsp;
@@ -141,9 +140,9 @@ This is a collectible granting agent immunity while walking on damaging tiles fo
 
 |Attribute|Type|Description|
 |---|---|---|
-|time_limit|TimeLimit Class|TimeLimit class that saves amount, indicating number of turns powerup is active|
+|usage_limit|UsageLimit Class|UsageLimit class that saves uses, showing the remaining durability of the shield|
 
-Note: Time limit is a constant at 5 steps.
+Note: Usage limit is a constant at 5 uses.
 
 &nbsp;
 ## PhasingPowerUpEntity
