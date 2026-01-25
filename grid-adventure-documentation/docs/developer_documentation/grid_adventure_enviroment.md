@@ -1,9 +1,11 @@
 # GridAdventureEnv
 
-The main game engine for the Grid Adventure turn-based game. It implements the Gymnasium API, providing a standard interface for agents to interact with the game.
+Grid Adventure uses an underlying game engine for the `Grid Universe` turn-based game. It implements the Gymnasium API, providing a standard interface for agents to interact with the game.
+
+**Note**: For the purpose of the Capstone Project, knowledge of the `Grid Universe` is not required.
 
 ## Big Picture
-The GridAdventureEnv holds an internal state ([State](game_representation.md#state-representation) class), this can be seen as the simulation. Its job is to provide player with the game representation, or "snapshot", at each turn via the `reset` or `step` function.
+The GridAdventureEnv holds an internal state representation ([State](game_representation.md#state-representation) class), this can be seen as the simulation. Its job is to provide player with the game representation, or "snapshot", at each turn via the `reset` or `step` function.
 
 ## Constructor Parameters
 
@@ -30,7 +32,7 @@ Note: For more details about "Observation class" & "Level class", Please refer t
 
 ```python
 from grid_adventure.env import GridAdventureEnv
-from grid_universe.actions import Action
+from grid_adventure.actions import Action
 
 env = GridAdventureEnv(initial_state_fn=my_generator)
 obs, info = env.reset()
