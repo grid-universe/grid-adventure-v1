@@ -20,7 +20,7 @@ Actions are primarily used with the step function of [GridAdventureEnv](grid_adv
 # Import
 from grid_adventure.actions import Action
 
-# Using Action enum with enviroment
+# Using Action enum with the environment
 obs, reward, terminated, truncated, info = env.step(Action.UP)
 
 # Using integer index

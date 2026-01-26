@@ -2,19 +2,19 @@
 # ImageObservation Representation
 The ImageObservation representation is created by the Grid Adventure V1 game engine. It contains a 3D image array with additional information in a dictionary.
 
-## ImageObservation Attribute Hierachy
-The ImageObservation Class represents the Game snapshot as a dictionary with the following hierachy.
+## ImageObservation Attribute Hierarchy
+The ImageObservation Class represents the game snapshot as a dictionary with the following hierarchy.
 
 ```
 ImageObservation: TypedDict
 ├── image: ndarray[H, W, 4] (uint8)
-│   └── RGBA pixel data for rendered grid
+│   └── RGBA pixel data for the rendered grid
 │
-└── info: InfoDict #Dictionary subclass
+└── info: InfoDict # Dictionary subclass
     │
-    ├── agent: AgentInfo #Dictionary subclass
+    ├── agent: AgentInfo # Dictionary subclass
     │   │
-    │   ├── health: HealthInfo #Dictionary subclass
+    │   ├── health: HealthInfo # Dictionary subclass
     │   │   ├── current_health: int (-1 if missing)
     │   │   └── max_health: int (-1 if missing)
     │   │
@@ -32,12 +32,12 @@ ImageObservation: TypedDict
     │           ├── type: str ("key" | "gem" | "coin" | "item")
     │           └── appearance_name: str ("" if unknown)
     │
-    ├── status: StatusInfo #Dictionary subclass
+    ├── status: StatusInfo # Dictionary subclass
     │   ├── score: int
     │   ├── phase: str ("ongoing" | "win" | "lose")
     │   └── turn: int
     │
-    ├── config: ConfigInfo #Dictionary subclass
+    ├── config: ConfigInfo # Dictionary subclass
     │   ├── movement: str (movement function name)
     │   ├── objective: str (objective function name)
     │   ├── seed: int (-1 if None)
@@ -53,6 +53,7 @@ ImageObservation: TypedDict
 ```python
 from grid_adventure.gym_env import GridAdventureEnv
 from grid_adventure.examples.maze import generate
+import numpy as np
 
 env = GridAdventureEnv(
     initial_state_fn=generate,
@@ -61,7 +62,7 @@ env = GridAdventureEnv(
 )
 obs, info = env.reset()
 
-image = obs["image"]  # shape: (H, W, 4), dtype: uint8
+image = obs["image"]  # Shape: (H, W, 4), dtype: uint8
 
 # Get image dimensions
 height, width, channels = image.shape
@@ -96,7 +97,7 @@ env = GridAdventureEnv(
 )
 obs, info = env.reset()
 
-# Access the rendered image
+# Access the rendered image data
 image = obs["image"]  # shape: (H, W, 4), dtype: uint8
 
 # Access agent health

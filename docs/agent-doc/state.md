@@ -1,15 +1,15 @@
 # State Representation
-The state representation is the same internal representation used by the Grid Adventure game, stores information in various attributes, tracked by EntityID of each Entity. It is the most comprehensive of the 3 representations, and the used to generate the GridState and Observation representations. 
+The state representation is the internal representation used by the Grid Adventure game. It stores information in various attributes, tracked by EntityID of each Entity. It is the most comprehensive of the 3 representations, and is used to generate the GridState and ImageObservation representations. 
 
 !!! warning "WARNING ON STATE SPACE"
-    The Capstone Project can be solved without using the **State Representation**, however the State Representation is included for a lower level acess to the representation.
+    The Capstone Project can be solved without using the **State Representation**, however the State Representation is included for a lower level access to the representation.
 
 ## State Attributes
 The state Class represents the Game snapshot with the following 4 types of attributes.
 
 - Level Configuration
 - Effect Configuration
-- Property Componenets
+- Property Components
 - Game Status
 
 ### Level Configuration
@@ -23,8 +23,8 @@ The state Class represents the Game snapshot with the following 4 types of attri
 
 ### Effect Components
 
-All effect stores are `PMap[EntityID, Component]`.  
-Note: `PMap` is an Immutable Dictionary, dictionary methods are available.
+All effect stores are of type `PMap[EntityID, Component]`.  
+Note: `PMap` is an immutable dictionary, standard dictionary methods are available.
 
 | Attribute | Mapped Component | Description |
 |-----------|-----------|-------------|
@@ -36,8 +36,8 @@ Note: `PMap` is an Immutable Dictionary, dictionary methods are available.
 
 ### Property Components
 
-All property stores are `PMap[EntityID, Component]`.  
-Note: `PMap` is an Immutable Dictionary, dictionary methods are available.
+All property stores are of type `PMap[EntityID, Component]`.  
+Note: `PMap` is an immutable dictionary, standard dictionary methods are available.
 
 | Attribute | Mapped Component | Description |
 |-----------|-----------|-------------|
@@ -96,7 +96,7 @@ There are in general 5 types of Entities
 
 &nbsp;
 ### Collidable Entities
-This are entities which can pass through each other but will trigger interactions when this happens. These entities are recognisable for possession of `collidable` attribute of `Collidable` class.  
+These are entities which can pass through each other but trigger interactions when they do. These entities are recognisable for possession of `collidable` attribute of `Collidable` class.  
 
 There are in total 2 relevant Collidable Entities.
 
@@ -110,21 +110,21 @@ This is the entity controlled by the user.
 |Attribute|Type|Description|
 |---|---|---|
 |health|Health Class|Health to give the agent, constitutes Max and current health|
-|inventory|Inventory Class|List of Entity that represents the Agents inventory|
-|status|Status Class|List of Entity that represents the Status Active on Agent|
+|inventory|Inventory Class|List of Entity that represents the Agent's inventory|
+|status|Status Class|List of Entity that represents the statuses active on the agent|
 
 |Available Methods|Inputs|Description|
 |---|---|---|
-|set_health|health: int|Sets agent health|
+|set_health|health: int|Sets the agent's health|
 
 &nbsp;
 #### [LavaEntity](../player-guide/entities.md#lava)
-This is a damaging entity that the agent can walk through
+This is a damaging entity that the agent can walk through.
 
 &nbsp;
 
 ### BlockingEntity
-This are entities which cannot be passed through by Collidable Entities. These entities are recognisable for possession of `blocking` attribute of `Blocking` class.  
+These are entities which cannot be passed through by Collidable Entities. These entities are recognisable for possession of `blocking` attribute of `Blocking` class.  
 
 There are in total 3 relevant BlockingEntity. 
 
@@ -135,23 +135,23 @@ There are in total 3 relevant BlockingEntity.
 &nbsp;
 
 ### PushableEntity
-This are entities which are pushable by the Agent. These entities are recognisable for possession of `pushable` attribute of `Pushable` class. 
+These are entities which are pushable by the Agent. These entities are recognisable for possession of `pushable` attribute of `Pushable` class. 
 
 There is 1 relevant pushable entity, [BoxEntity](#boxentity)
 
 &nbsp;
 #### [WallEntity](../player-guide/entities.md#wall)
-This is a wall entity that the agent cannot walk through nor push. The wall entity has no attributes.
+This is a wall entity that the agent cannot walk through or push. The wall entity has no attributes.
 
 &nbsp;
 #### [BoxEntity](../player-guide/entities.md#box)
-This is a pushable blocking entity, that the agent can push but not walk through. The box entity has no attributes.
+This is a pushable blocking entity that the agent can push but not walk through. The box entity has no attributes.
 
 Note: that the box is also a [Pushable](#pushableentity) Entity
 
 &nbsp;
 #### [LockedDoorEntity](../player-guide/entities.md#door)
-This is a blocking entity that the agent cannot push through nor push. This entity becomes a [UnlockedDoorEntity](#unlockeddoorentity), when a [KeyEntity](#keyentity) is used on it
+This is a blocking entity that the agent cannot push through or push. This entity becomes a [UnlockedDoorEntity](#unlockeddoorentity), when a [KeyEntity](#keyentity) is used on it
 
 |Attribute|Type|Description|
 |---|---|---|
@@ -162,7 +162,7 @@ Note: Each level can have multiple key - door pairs. Any key can be used to unlo
 &nbsp;
 
 ### CollectibleEntity
-This are entities which are collectable by the Agent. These entities are recognisable for possession of `collectible` attribute of `Collectible` class. 
+These are entities which are collectible by the agent. These entities are recognisable for possession of `collectible` attribute of `Collectible` class. 
 
 There are in total 6 relevant CollectibleEntity.
 
@@ -185,12 +185,12 @@ Note: Score received for collecting a coin is fixed at 5.
 
 &nbsp;
 #### [GemEntity](../player-guide/entities.md#gem)
-This is a **compulsory** Collectible to be collected by agent before it can enter the exit. The GemEntity has no attributes.
+This is a **compulsory** collectible to be collected by agent before it can enter the exit. The GemEntity has no attributes.
 
 
 &nbsp;
 #### [KeyEntity](../player-guide/entities.md#key)
-This is a Collectible required to unlock a [LockedDoorEntity](#lockeddoorentity)
+This is a collectible required to unlock a [LockedDoorEntity](#lockeddoorentity)
 
 |Attribute|Type|Description|
 |---|---|---|
@@ -200,7 +200,7 @@ Note: Any key present in the grid can be used to unlock a door, but each key can
 
 &nbsp;
 #### [SpeedPowerUpEntity](../player-guide/entities.md#powerup-speed)
-This is a collectible granting agent the ability to walk 2 tiles in 1 turn for a duration of time.
+This is a collectible power-up granting agent the ability to walk 2 tiles in 1 turn for a duration of time.
 
 |Attribute|Type|Description|
 |---|---|---|
@@ -211,7 +211,7 @@ Note: Time limit is a constant at 5 steps.
 
 &nbsp;
 #### [ShieldPowerUpEntity](../player-guide/entities.md#powerup-shield)
-This is a collectible granting agent immunity while walking on damaging tiles for 5 uses.
+This is a collectible power-up granting agent immunity while walking on damaging tiles for 5 uses.
 
 |Attribute|Type|Description|
 |---|---|---|
@@ -221,7 +221,7 @@ Note: Usage limit is a constant at 5 uses.
 
 &nbsp;
 #### [PhasingPowerUpEntity](../player-guide/entities.md#powerup-phasing)
-This is a collectible granting agent ability to walk through [BlockingEntity](#blockingentity) for a duration of time.
+This is a collectible power-up granting agent ability to walk through [BlockingEntity](#blockingentity) for a duration of time.
 
 |Attribute|Type|Description|
 |---|---|---|
@@ -235,19 +235,19 @@ These Entities extend directly from BaseEntity. They are either non interactable
 
 &nbsp;
 #### [ExitEntity](../player-guide/entities.md#exit)
-This are unique Exit Entity and serve as the exit objective. The ExitEntity has no other attributes.
+This serves as the final tile the agent has to reach to complete the objective. The ExitEntity has no other attributes.
 
 &nbsp;
 #### [FloorEntity](../player-guide/entities.md#floor)
-Floor entities are not interactable with agent.
+Floor entities are not interactable with the agent.
 
 &nbsp;
 #### [UnlockedDoorEntity](../player-guide/entities.md#door)
-UnlockedDoorEntity is not interactable with agent, serving only aesthetic purpose. It is the unlocked version of the [LockedDoorEntity](#lockeddoorentity). The UnlockedDoorEntity has no attributes.
+UnlockedDoorEntity is not interactable with agent and serves only an aesthetic purpose. It is the unlocked version of the [LockedDoorEntity](#lockeddoorentity). The UnlockedDoorEntity has no attributes.
 
 &nbsp;
 ## Usage Example
-All effects and components are represented by Entities in the Grid Adventure game. Each entity is assigned a unique EntityID at creation. This EntityID is used to map to each attribute of the Entity. For more details about entities, Please refer to [Entity Classes](#entities).
+All effects and components are represented by Entities in the Grid Adventure game. Each entity is assigned a unique EntityID at creation. This EntityID is used to map to each attribute of the Entity. For more details about entities, please refer to [Entity Classes](#entities).
 
 ---                                                                                                                                                                               
 Example 1: Player Entity
