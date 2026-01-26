@@ -256,7 +256,7 @@ def build_level_power_boots(seed: int = 112) -> GridState:
     return gridstate
 
 
-def build_level_mini_capstone(seed: int = 113) -> GridState:
+def build_level_combined_mechanics(seed: int = 113) -> GridState:
     gridstate = GridState(
         width=7,
         height=7,
@@ -310,7 +310,7 @@ def build_level_mini_capstone(seed: int = 113) -> GridState:
     return gridstate
 
 
-def build_level_capstone(seed: int = 113) -> GridState:
+def build_level_boss(seed: int = 113) -> GridState:
     gridstate = GridState(
         width=7,
         height=7,

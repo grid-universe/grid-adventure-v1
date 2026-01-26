@@ -26,8 +26,8 @@ BUILDERS: dict[str, Builder] = {
     "A7 Shield Powerup": adv_intro_levels.build_level_power_shield,
     "A8 Ghost Powerup": adv_intro_levels.build_level_power_ghost,
     "A9 Boots Powerup": adv_intro_levels.build_level_power_boots,
-    "A10 Mini Capstone": adv_intro_levels.build_level_mini_capstone,
-    "A11 Capstone": adv_intro_levels.build_level_capstone,
+    "A10 Combined Mechanics": adv_intro_levels.build_level_combined_mechanics,
+    "A11 Boss Level": adv_intro_levels.build_level_boss,
 }
 
 
