@@ -1,12 +1,12 @@
 
-# Observation Representation
-The observation representation is created by the grid Adventures game engine, and is non reversible. Players are not able to convert observation representation into Level or State representation.
+# ImageObservation Representation
+The ImageObservation representation is created by the Grid Adventure V1 game engine, and is non reversible. Players are not able to convert ImageObservation representation into GridState or State representation.
 
-## Observation Attribute Hierachy
-The observation Class represents the Game snapshot as a dictionary with the following hierachy.
+## ImageObservation Attribute Hierachy
+The ImageObservation Class represents the Game snapshot as a dictionary with the following hierachy.
 
 ```
-Observation: TypedDict
+ImageObservation: TypedDict
 ├── image: ndarray[H, W, 4] (uint8)
 │   └── RGBA pixel data for rendered grid
 │

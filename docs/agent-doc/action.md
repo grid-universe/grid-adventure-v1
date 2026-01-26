@@ -15,7 +15,7 @@ The `Action` enum defines all available player actions.
 | 6 | `WAIT` | Do nothing (advance turn) |
 
 ## Use Case
-Actions are primarily used with the step function of [GridAdventureEnv](grid_adventure_enviroment.md#methods).
+Actions are primarily used with the step function of [GridAdventureEnv](grid_adventure_environment.md#methods).
 ```python
 # Import
 from grid_adventure.actions import Action

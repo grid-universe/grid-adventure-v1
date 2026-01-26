@@ -5,6 +5,7 @@ theme:
   features:
     - navigation.tabs
 markdown_extensions:
+  - admonition
   - pymdownx.highlight:
       anchor_linenums: true
   - pymdownx.superfences
@@ -16,11 +17,11 @@ nav:
       - Objectives: player-guide/objectives.md
       - Movements: player-guide/movements.md
   - Agent Documentation:
-        - Grid Adventure Enviroment: agent-doc/grid_adventure_enviroment.md 
-        - Game Representation: agent-doc/game_representation.md
-        - Observation Representation: agent-doc/observation.md
-        - Entity Classes: agent-doc/entities.md
-        - Action Classes: agent-doc/action.md
-        - Agent Class: agent-doc/agent.md
-        - State Representation: agent-doc/state.md
-
+      - Grid Adventure Environment: agent-doc/grid_adventure_environment.md
+      - Game Representation:
+          - Game Representation Overview: agent-doc/game_representation.md
+          - GridState: agent-doc/gridstate.md
+          - ImageObservation: agent-doc/image_observation.md
+          - State: agent-doc/state.md
+      - Action Class: agent-doc/action.md
+      - Agent Class: agent-doc/agent.md

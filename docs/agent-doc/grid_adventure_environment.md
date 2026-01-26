@@ -1,11 +1,6 @@
 # GridAdventureEnv
 
-Grid Adventure uses an underlying game engine for the `Grid Universe` turn-based game. It implements the Gymnasium API, providing a standard interface for agents to interact with the game.
-
-**Note**: For the purpose of the Capstone Project, knowledge of the `Grid Universe` is not required.
-
-## Big Picture
-The GridAdventureEnv holds an internal state representation ([State](state.md) class), this can be seen as the simulation. Its job is to provide player with the game representation, or "snapshot", at each turn via the `reset` or `step` function.
+GridAdventureEnv is the main environment that runs the Grid Adventure V1 game. It implements the Gymnasium API, providing a standard interface for agents to interact with the game.
 
 ## Constructor Parameters
 
@@ -13,9 +8,9 @@ The GridAdventureEnv holds an internal state representation ([State](state.md) c
 |-----------|------|---------|-------------|
 | `initial_state_fn` | `Callable[..., State]` | required | Function that generates the initial internal game state |
 | `render_mode` | `str` | `"rgb_array"` | Rendering mode |
-| `observation_type` | `str` | `"image"` | This determines if the game representation returned is of image ([Observation](observation.md) class) or gridstate ([GridState](game_representation.md#gridstate-representation) class)|
+| `observation_type` | `str` | `"image"` | `"gridstate"` | This determines if the game representation returned is of image ([ImageObservation](image_observation.md) class) or gridstate ([GridState](#gridstate) class)|
 
-Note: For more details about "Observation class" & "GridState class", Please refer to [Game Representation](game_representation.md).
+Note: For more details about "ImageObservation class" & "GridState class", Please refer to [Game Representation](game_representation.md).
 
 &nbsp;
 ## Methods
