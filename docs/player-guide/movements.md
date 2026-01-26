@@ -46,10 +46,10 @@ In this demo, the agent health has been set to 1, so landing on lava will result
 
 ![Shield_Movement](../assets/shield_movement.gif)
 
-## Powerup-Ghost
+## Powerup-Phasing
 
-Ghost powerup allows the agent to move through objects such as walls and doors. It lasts for 5 turns.
+Phasing powerup allows the agent to move through objects such as walls and doors. It lasts for 5 turns.
 
-In this demo, the agent collects the ghost powerup to pass through the walls and reach the exit tile.
+In this demo, the agent collects the phasing powerup to pass through the walls and reach the exit tile.
 
-![Ghost_Movement](../assets/ghost_movement.gif)
+![Phasing_Movement](../assets/ghost_movement.gif)

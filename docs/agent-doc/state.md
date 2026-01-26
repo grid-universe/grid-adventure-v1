@@ -104,7 +104,7 @@ There are in total 2 relevant Collidable Entities.
 - LavaEntity  
 
 &nbsp;
-#### AgentEntity
+#### [AgentEntity](../player-guide/entities.md#agent)
 This is the entity controlled by the user.
 
 |Attribute|Type|Description|
@@ -118,10 +118,8 @@ This is the entity controlled by the user.
 |set_health|health: int|Sets agent health|
 
 &nbsp;
-#### Lava Entity
+#### [LavaEntity](../player-guide/entities.md#lava)
 This is a damaging entity that the agent can walk through
-
-Note: Lava has a fixed Damage of 2.
 
 &nbsp;
 
@@ -134,20 +132,25 @@ There are in total 3 relevant BlockingEntity.
 - LockedDoorEntity 
 - BoxEntity  
 
-Note that the Box is also a PushableEntity.  
+&nbsp;
+
+### PushableEntity
+This are entities which are pushable by the Agent. These entities are recognisable for possession of `pushable` attribute of `Pushable` class. 
+
+There is 1 relevant pushable entity, [BoxEntity](#boxentity)
 
 &nbsp;
-#### WallEntity
-This is a wall entity that the agent cannot walk through nor push. The wall entity has no atributes.
+#### [WallEntity](../player-guide/entities.md#wall)
+This is a wall entity that the agent cannot walk through nor push. The wall entity has no attributes.
 
 &nbsp;
-#### BoxEntity
-This is a movable blocking entity, that the agent can push but not walk through. The box entity has no attributes.
+#### [BoxEntity](../player-guide/entities.md#box)
+This is a pushable blocking entity, that the agent can push but not walk through. The box entity has no attributes.
 
-Note: that the box is also a Pushable Entity
+Note: that the box is also a [Pushable](#pushableentity) Entity
 
 &nbsp;
-#### LockedDoorEntity
+#### [LockedDoorEntity](../player-guide/entities.md#door)
 This is a blocking entity that the agent cannot push through nor push. This entity becomes a [UnlockedDoorEntity](#unlockeddoorentity), when a [KeyEntity](#keyentity) is used on it
 
 |Attribute|Type|Description|
@@ -155,13 +158,6 @@ This is a blocking entity that the agent cannot push through nor push. This enti
 |locked|Locked Class|Locked door that can be unlocked by a Key|
 
 Note: Each level can have multiple key - door pairs. Any key can be used to unlock a door, but each key can only be used once.
-
-&nbsp;
-
-### PushableEntity
-This are entities which are pushable by the Agent. These entities are recognisable for possession of `pushable` attribute of `Pushable` class. 
-
-There is only 1 relevant PushableEntity, it is the BoxEntity. For documentation of box, see the [BoxEntity](#boxentity).
 
 &nbsp;
 
@@ -178,7 +174,7 @@ There are in total 6 relevant CollectibleEntity.
 - PhasingPowerUpEntity  
 
 &nbsp;
-#### CoinEntity
+#### [CoinEntity](../player-guide/entities.md#coin)
 This is an **optional** collectible that provides a score when collected by the agent. 
 
 |Attribute|Type|Description|
@@ -188,12 +184,12 @@ This is an **optional** collectible that provides a score when collected by the 
 Note: Score received for collecting a coin is fixed at 5.
 
 &nbsp;
-#### GemEntity
+#### [GemEntity](../player-guide/entities.md#gem)
 This is a **compulsory** Collectible to be collected by agent before it can enter the exit. The GemEntity has no attributes.
 
 
 &nbsp;
-#### KeyEntity
+#### [KeyEntity](../player-guide/entities.md#key)
 This is a Collectible required to unlock a [LockedDoorEntity](#lockeddoorentity)
 
 |Attribute|Type|Description|
@@ -203,7 +199,7 @@ This is a Collectible required to unlock a [LockedDoorEntity](#lockeddoorentity)
 Note: Any key present in the grid can be used to unlock a door, but each key can only be used once.
 
 &nbsp;
-#### SpeedPowerUpEntity
+#### [SpeedPowerUpEntity](../player-guide/entities.md#powerup-speed)
 This is a collectible granting agent the ability to walk 2 tiles in 1 turn for a duration of time.
 
 |Attribute|Type|Description|
@@ -214,7 +210,7 @@ This is a collectible granting agent the ability to walk 2 tiles in 1 turn for a
 Note: Time limit is a constant at 5 steps.
 
 &nbsp;
-#### ShieldPowerUpEntity
+#### [ShieldPowerUpEntity](../player-guide/entities.md#powerup-shield)
 This is a collectible granting agent immunity while walking on damaging tiles for 5 uses.
 
 |Attribute|Type|Description|
@@ -224,7 +220,7 @@ This is a collectible granting agent immunity while walking on damaging tiles fo
 Note: Usage limit is a constant at 5 uses.
 
 &nbsp;
-#### PhasingPowerUpEntity
+#### [PhasingPowerUpEntity](../player-guide/entities.md#powerup-phasing)
 This is a collectible granting agent ability to walk through [BlockingEntity](#blockingentity) for a duration of time.
 
 |Attribute|Type|Description|
@@ -238,15 +234,15 @@ Note: Time limit is a constant at 5 steps.
 These Entities extend directly from BaseEntity. They are either non interactable entities which are purely for aesthetic purposes, or in the case of ExitEntity & FloorEntity, entities with special purposes.
 
 &nbsp;
-#### ExitEntity
+#### [ExitEntity](../player-guide/entities.md#exit)
 This are unique Exit Entity and serve as the exit objective. The ExitEntity has no other attributes.
 
 &nbsp;
-#### FloorEntity 
+#### [FloorEntity](../player-guide/entities.md#floor)
 Floor entities are not interactable with agent.
 
 &nbsp;
-#### UnlockedDoorEntity 
+#### [UnlockedDoorEntity](../player-guide/entities.md#door)
 UnlockedDoorEntity is not interactable with agent, serving only aesthetic purpose. It is the unlocked version of the [LockedDoorEntity](#lockeddoorentity). The UnlockedDoorEntity has no attributes.
 
 &nbsp;

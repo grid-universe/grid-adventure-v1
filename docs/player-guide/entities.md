@@ -85,6 +85,6 @@ Shield protects the agent from damage taken. It has a usage limit of 5. The shie
 
 ## Powerup-Phasing
 
-![Ghost](../assets/ghosts.png)
+![Phasing](../assets/ghosts.png)
 
 Phasing allows the agent to move through objects. It has a turn limit of 5. While the powerup is active, the agent can move through walls and doors. The agent does not take damage from lava as well.

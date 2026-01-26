@@ -58,7 +58,7 @@ Note: `obj` is of class `BaseEntity`, parent class of all Entities. For more det
 ### Entity List
 There are a total of 14 Entities that can be present on the grid. To view the appearance and interactions between the entities, refer to the [Player Guide](../player-guide/entities.md)
 
-**[1. AgentEntity](../player-guide/entities.md#agent)**
+**[AgentEntity](../player-guide/entities.md#agent)**
 
 This is the entity controlled by the user. Agent contains additional attributes
 
@@ -72,28 +72,28 @@ This is the entity controlled by the user. Agent contains additional attributes
 |---|---|---|
 |set_health|health: int|Sets agent health|
 
-**[2. LavaEntity](../player-guide/entities.md#lava)**
+**[LavaEntity](../player-guide/entities.md#lava)**
 
-**[3. WallEntity](../player-guide/entities.md#wall)**
+**[WallEntity](../player-guide/entities.md#wall)**
 
-**[4. BoxEntity](../player-guide/entities.md#box)**
+**[BoxEntity](../player-guide/entities.md#box)**
 
-**[5. LockedDoorEntity](../player-guide/entities.md#door)**
+**[CoinEntity](../player-guide/entities.md#coin)**
 
-**[6. CoinEntity](../player-guide/entities.md#coin)**
+**[GemEntity](../player-guide/entities.md#gem)**
 
-**[7. GemEntity](../player-guide/entities.md#gem)**
+**[KeyEntity](../player-guide/entities.md#key)**
 
-**[8. KeyEntity](../player-guide/entities.md#key)**
+**[LockedDoorEntity](../player-guide/entities.md#door)**
 
-**[9. SpeedPowerUpEntity](../player-guide/entities.md#powerup-speed)**
+**[UnlockedDoorEntity](../player-guide/entities.md#door)**
 
-**[10. ShieldPowerUpEntity](../player-guide/entities.md#powerup-shield)**
+**[SpeedPowerUpEntity](../player-guide/entities.md#powerup-speed)**
 
-**[11. PhasingPowerUpEntity](../player-guide/entities.md#powerup-phasing)**
+**[ShieldPowerUpEntity](../player-guide/entities.md#powerup-shield)**
 
-**[12. ExitEntity](../player-guide/entities.md#exit)**
+**[PhasingPowerUpEntity](../player-guide/entities.md#powerup-phasing)**
 
-**[13. FloorEntity](../player-guide/entities.md#floor)**
+**[ExitEntity](../player-guide/entities.md#exit)**
 
-**[14. UnlockedDoorEntity](../player-guide/entities.md#door)**
+**[FloorEntity](../player-guide/entities.md#floor)**
