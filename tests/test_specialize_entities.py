@@ -100,17 +100,7 @@ def test_specialize_every_entity_type():
     gridstate.add(coords["portal_b"], p2)
     # Boxes
     gridstate.add(coords["box"], create_box(pushable=True))
-    gridstate.add(
-        coords["moving_box"],
-        create_box(
-            pushable=False,
-            moving_direction="right",
-            moving_on_collision="bounce",
-            moving_speed=1,
-        ),
-    )
     # Hostiles / hazards
-    gridstate.add(coords["monster"], create_monster(damage=1, lethal=False))
     gridstate.add(coords["lava"], create_hazard("lava", damage=2, lethal=True))
     # Power-ups
     gridstate.add(coords["speed"], create_speed_effect(multiplier=2, time=5))
@@ -297,22 +287,7 @@ def test_specialize_roundtrip_preserves_types_and_coordinates():
     gridstate.add(
         coords["unlocked_door"], Entity(appearance=Appearance(name="door", priority=6))
     )
-    p1 = create_portal()
-    p2 = create_portal(pair=p1)
-    gridstate.add(coords["portal_a"], p1)
-    gridstate.add(coords["portal_b"], p2)
-
     gridstate.add(coords["box"], create_box(pushable=True))
-    gridstate.add(
-        coords["moving_box"],
-        create_box(
-            pushable=False,
-            moving_direction="right",
-            moving_on_collision="bounce",
-            moving_speed=1,
-        ),
-    )
-    gridstate.add(coords["monster"], create_monster(damage=1, lethal=False))
     gridstate.add(coords["lava"], create_hazard("lava", damage=2, lethal=True))
     gridstate.add(coords["speed"], create_speed_effect(multiplier=2, time=5))
     gridstate.add(coords["shield"], create_immunity_effect(usage=5))

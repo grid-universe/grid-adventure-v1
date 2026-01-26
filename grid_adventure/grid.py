@@ -78,9 +78,6 @@ def _specialize_single(obj: BaseEntity) -> BaseEntity:
     if has("key"):
         return copy_entity_components(obj, KeyEntity(), preserve_entity_id=True)
 
-    # Portal
-    if has("portal"):
-        return copy_entity_components(obj, PortalEntity(), preserve_entity_id=True)
     # Collectibles
     if has("collectible"):
         # Power-ups first
@@ -100,20 +97,14 @@ def _specialize_single(obj: BaseEntity) -> BaseEntity:
         if app_name == "core" or has("requirable"):
             return copy_entity_components(obj, GemEntity(), preserve_entity_id=True)
         return copy_entity_components(obj, CoinEntity(), preserve_entity_id=True)
-    # Boxes: moving vs static
+
+    # Boxes
     if app_name == "box":
-        if has("moving"):
-            return copy_entity_components(
-                obj, MovingBoxEntity(), preserve_entity_id=True
-            )
         return copy_entity_components(obj, BoxEntity(), preserve_entity_id=True)
 
     # Hazards
     if app_name == "lava":
         return copy_entity_components(obj, LavaEntity(), preserve_entity_id=True)
-    if app_name == "monster" or app_name == "robot":
-        return copy_entity_components(obj, RobotEntity(), preserve_entity_id=True)
-
     # Background tiles
     if app_name == "floor":
         return copy_entity_components(obj, FloorEntity(), preserve_entity_id=True)
@@ -176,30 +167,8 @@ def specialize_entities(gridstate: GridState) -> GridState:
 
                 obj_map[id(orig_obj)] = spec_obj
                 specialized_cell.append(spec_obj)
-            for spec_obj in specialized_cell:
-                new_grid_state.add((x, y), spec_obj)
 
-    # Second pass: remap cross-entity references to specialized targets/pairs
-    for x in range(new_grid_state.width):
-        for y in range(new_grid_state.height):
-            for spec_obj in new_grid_state.grid[x][y]:
-                # pathfind_target_ref
-                if hasattr(spec_obj, "pathfind_target_ref"):
-                    old_ref = getattr(spec_obj, "pathfind_target_ref", None)
-                    if old_ref is not None:
-                        new_ref = obj_map.get(id(old_ref))
-                        if new_ref is not None:
-                            setattr(spec_obj, "pathfind_target_ref", new_ref)
-                # portal_pair_ref (ensure bidirectional)
-                if hasattr(spec_obj, "portal_pair_ref"):
-                    old_mate = getattr(spec_obj, "portal_pair_ref", None)
-                    if old_mate is not None:
-                        new_mate = obj_map.get(id(old_mate))
-                        if new_mate is not None:
-                            setattr(spec_obj, "portal_pair_ref", new_mate)
-                            if getattr(new_mate, "portal_pair_ref", None) is None:
-                                setattr(new_mate, "portal_pair_ref", spec_obj)
-
+            new_grid_state.grid[x][y] = specialized_cell
     return new_grid_state
 
 
