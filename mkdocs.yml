@@ -17,6 +17,7 @@ nav:
       - Objectives: player-guide/objectives.md
       - Movements: player-guide/movements.md
   - Agent Documentation:
+      - Introduction: agent-doc/introduction.md
       - Grid Adventure Environment: agent-doc/grid_adventure_environment.md
       - Game Representation:
           - Game Representation Overview: agent-doc/game_representation.md
