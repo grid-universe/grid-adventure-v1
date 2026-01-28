@@ -81,7 +81,7 @@ Note: `PMap` is an immutable dictionary, standard dictionary methods are availab
 
 &nbsp;
 ## Entities
-&nbsp;
+All effects and components are represented by Entities in the Grid Adventure game. Each entity is assigned a unique EntityID at creation. This EntityID is used to map to each attribute of the Entity.
 
 ### Entity Types
 There are in general 5 types of Entities
@@ -110,8 +110,8 @@ This is the entity controlled by the user.
 |Attribute|Type|Description|
 |---|---|---|
 |health|Health Class|Health to give the agent, constitutes Max and current health|
-|inventory|Inventory Class|List of Entity that represents the Agent's inventory|
-|status|Status Class|List of Entity that represents the statuses active on the agent|
+|inventory_list|Inventory Class|List of Entity that represents the Agent's inventory|
+|status_list|Status Class|List of Entity that represents the statuses active on the agent|
 
 |Available Methods|Inputs|Description|
 |---|---|---|
@@ -147,7 +147,7 @@ This is a wall entity that the agent cannot walk through or push. The wall entit
 #### [BoxEntity](../player-guide/entities.md#box)
 This is a pushable blocking entity that the agent can push but not walk through. The box entity has no attributes.
 
-Note: that the box is also a [Pushable](#pushableentity) Entity
+Note: that the box is both [Blocking](#blockingentity) and a [Pushable](#pushableentity) Entity
 
 &nbsp;
 #### [LockedDoorEntity](../player-guide/entities.md#door)
@@ -247,28 +247,79 @@ UnlockedDoorEntity is not interactable with agent and serves only an aesthetic p
 
 &nbsp;
 ## Usage Example
-All effects and components are represented by Entities in the Grid Adventure game. Each entity is assigned a unique EntityID at creation. This EntityID is used to map to each attribute of the Entity. For more details about entities, please refer to [Entity Classes](#entities).
+ Use the code examples given below to familiarise yourself on the `State` representation and explore the different components.
 
----                                                                                                                                                                               
-Example 1: Player Entity
-                                                                
-A player entity with EntityID = 1 that has position, health, appearance, and agent components:  
-    
-&emsp;&emsp;state.position[1]   = Position(x=3, y=5)  
-&emsp;&emsp;state.health[1]     = Health(health=100, max_health=100)  
-&emsp;&emsp;state.appearance[1] = Appearance(name="human", priority=10)  
-&emsp;&emsp;state.agent[1]      = AgentEntity()  
-&emsp;&emsp;state.inventory[1]  = Inventory(item_ids=pset([2, 3]))  # holds items 2 and 3   
+--- 
 
-The same EntityID appears in multiple component stores, each holding a different aspect of that entity.
+### Useful Operations
 
+- **Get agent ID**
+  ```python
+  next(iter(state.agent.keys()), None)
+  ```
+
+- **Lookup components by EntityId**
+  ```python
+  state.position.get(eid)
+  eid in state.blocking
+  ```
+
+- **Iterate entities in a cell**  
+  Invert `state.position` to obtain a mapping of:
+  ```text
+  Position -> [EntityID]
+  ```
+
+- **Sparse debug view**
+  ```python
+  state.description
+  ```
+  Returns a `PMap` containing only populated component stores.
+
+- **Apply an action**
+  ```python
+  step(State, Action) -> State
 ---
-Example 2: Status Effect Entity
 
-An immunity effect with EntityID = 50 applied to the player (EntityID = 1):
+### Full Example
 
-&emsp;&emsp;state.immunity[50]   = Immunity()  
-&emsp;&emsp;state.time_limit[50] = TimeLimit(amount=10)  # lasts 10 turns  
-&emsp;&emsp;state.status[1]      = Status(effect_ids=pset([50]))  # player has effect 50  
+```python
+from grid_adventure.step import step
 
-The effect itself is an entity (EntityID = 50) stored in immunity and time_limit. The player's status component references this effect by its ID.
+# Creation of the grid still requires use of GridState
+gridstate = GridState(width=4, height=3, movement=MOVEMENTS["cardinal"], objective=OBJECTIVES["collect_gems_and_exit"], seed=0,)
+for y in range(gridstate.height):
+    for x in range(gridstate.width):
+        gridstate.add((x, y), FloorEntity())
+# Add an agent entity, box and exit to the grid
+gridstate.add((0, 1), AgentEntity())
+gridstate.add((1,1), BoxEntity())
+gristate.add((3,1), ExitEntity())
+
+# Convert GridState to the immutable State representation
+state = to_state(gridstate)
+
+# state.description contains only populated component stores
+# (e.g. position, agent, blocking, etc.)
+
+# state.position maps EntityID -> (x, y) coordinates and can be used to locate entities in the grid
+
+# Retrieve the agent's EntityID
+agent_id = next(iter(state.agent.keys()))
+box_entity_ids = list(state.pushable.keys()) # Find all entities that are pushable. Since only 1 box is added, it contains the entity id of the box
+box_id = box_entity_ids[0]
+
+# Look up current position
+agent_position = state.position.get(agent_id) #(0,1)
+box_position = state.position.get(box_id) #(1,1)
+
+# Check whether the entity is considered blocking
+is__agent_blocking = agent_id in state.blocking # False
+is_box_blocking = box_id in state.blocking # True
+
+# Apply an action using step. step returns a new State
+state = step(state, Action.RIGHT)
+
+# After stepping, the agent's position in state_3_1.position is updated
+new_agent_position = state.position.get(agent_id) #(1,1)
+```
