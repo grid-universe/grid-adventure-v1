@@ -93,6 +93,11 @@ def test_specialize_every_entity_type():
     gridstate.add(
         coords["unlocked_door"], Entity(appearance=Appearance(name="door", priority=6))
     )
+    # Portals
+    p1 = create_portal()
+    p2 = create_portal(pair=p1)
+    gridstate.add(coords["portal_a"], p1)
+    gridstate.add(coords["portal_b"], p2)
     # Boxes
     gridstate.add(coords["box"], create_box(pushable=True))
     # Hostiles / hazards
@@ -170,6 +175,11 @@ def test_specialize_every_entity_type():
     assert counts["ShieldPowerUpEntity"] == 1
     assert counts["PhasingPowerUpEntity"] == 1
 
+    # Behavioral/attribute checks (portal pairing is established during GridState->State conversion; not asserted here)
+    # MovingBox must have Moving; Box must not
+    moving_box = next(
+        obj for _, _, obj in _flatten(specialized) if isinstance(obj, MovingBoxEntity)
+    )
     box = next(obj for _, _, obj in _flatten(specialized) if isinstance(obj, BoxEntity))
     assert getattr(box, "moving", None) is None
 

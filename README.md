@@ -5,6 +5,8 @@ A gridworld puzzle-adventure game built on the Grid Universe engine.
 Navigate grid-based levels, collect coins and keys, avoid hazards and enemies, and find the exit. Features powerups (speed, phasing, shields), moving enemies, portals, and locked doors.
 
 ## Install
+You will need to create a new conda environment to set up the neccesary packages to use the grid-adventure. 
+**Note**: For the purposes of the Capstone Project, you may reuse the same enviroment in your notebooks. Please refer to the guide in PS0 to set up a new conda environment.
 
 ```bash
 pip install -e .
@@ -31,9 +33,9 @@ Use the Config tab to change levels or customize settings.
 
 ## Features
 
-- **Entities:** Player, walls, floors, exits, coins, keys, doors, enemies, hazards
+- **Entities:** Player, walls, floors, exits, coins, keys, doors, hazards
 - **Powerups:** Speed boost, phasing (walk through walls), damage immunity shield
-- **Mechanics:** Health system, inventory, time limits, portal teleportation, pushable blocks
+- **Mechanics:** Health system, inventory, time limits, pushable blocks
 - **Editor:** Visual level design with real-time testing
 
 ## Development

@@ -168,6 +168,23 @@ def test_hazard_damage_reduces_health():
     assert hp_after <= hp_before
 
 
+# ---- L7 ----
+def test_portal_teleportation():
+    """L7: Portal shortcut — stepping onto a portal should teleport to its pair."""
+    gridstate = intro.build_level_portal_shortcut(seed=107)
+    state = to_state(gridstate)
+    aid = _agent_id(state)
+
+    # Move toward and onto the portal at (2,1)
+    state = adv_step(state, Action.UP)
+    state = adv_step(state, Action.UP)
+    state = adv_step(state, Action.UP)
+    state = adv_step(state, Action.RIGHT)
+    pos_after = state.position[aid]
+
+    assert pos_after == Position(gridstate.width - 1, gridstate.height // 2)
+
+
 # ---- L8 ----
 def test_pushable_box_pushes():
     """L8: Pushable box — moving into a pushable should push it one tile forward if destination is free."""
@@ -198,6 +215,58 @@ def test_pushable_box_pushes():
         state, expected_box_dest, state.pushable
     )
     assert len(pushables_at_dest) > 0
+
+
+# ---- L9 ----
+def test_moving_box_moves():
+    """L9: Moving box — moving entities should advance vertically between steps (autonomous movement)."""
+    gridstate = intro.build_level_moving_box(seed=113)
+    state = to_state(gridstate)
+
+    w, h = state.width, state.height
+    start = Position(w // 2, h // 2)
+    down = Position(w // 2, h // 2 + 1)
+
+    # Sanity: moving entity at start
+    start_moving = entities_with_components_at(state, start, state.moving)
+    assert len(start_moving) > 0
+
+    # One step: should move down
+    state = adv_step(state, Action.WAIT)
+    assert len(entities_with_components_at(state, down, state.moving)) > 0
+
+    # Next step: should be blocked and reverse (stay at down)
+    state = adv_step(state, Action.WAIT)
+    assert len(entities_with_components_at(state, down, state.moving)) > 0
+
+    # Next step: should move back to start
+    state = adv_step(state, Action.WAIT)
+    assert len(entities_with_components_at(state, start, state.moving)) > 0
+
+
+# ---- L10 ----
+def test_enemy_patrol_moves():
+    """L10: Enemy patrol — monsters with Moving should advance vertically between steps (autonomous movement)."""
+    gridstate = intro.build_level_enemy_patrol(seed=109)
+    state = to_state(gridstate)
+
+    # Collect initial robot positions
+    initial_positions = {
+        eid: state.position[eid]
+        for eid, app in state.appearance.items()
+        if app.name == "robot" and eid in state.position
+    }
+    assert len(initial_positions) >= 2  # two patrol enemies expected
+
+    # Take one step; autonomous moving should update their positions
+    state = adv_step(state, Action.WAIT)
+    moved = 0
+    for eid, pos0 in initial_positions.items():
+        pos1 = state.position.get(eid, pos0)
+        if pos1 != pos0:
+            moved += 1
+
+    assert moved >= 1  # at least one enemy moved
 
 
 # ---- L11 ----

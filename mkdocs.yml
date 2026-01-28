@@ -1,0 +1,29 @@
+site_name: Grid-Adventure V1 Documentation
+
+theme:
+  name: material
+  features:
+    - navigation.tabs
+markdown_extensions:
+  - admonition
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences
+nav:
+  - Introduction: index.md
+  - Player Guide:
+      - Introduction: player-guide/introduction.md
+      - Entities: player-guide/entities.md
+      - Objectives: player-guide/objectives.md
+      - Movements: player-guide/movements.md
+  - Agent Documentation:
+      - Introduction: agent-doc/introduction.md
+      - Grid Adventure Environment: agent-doc/grid_adventure_environment.md
+      - Game Representation:
+          - Overview: agent-doc/game_representation.md
+          - GridState: agent-doc/gridstate.md
+          - ImageObservation: agent-doc/image_observation.md
+          - State: agent-doc/state.md
+      - Action Class: agent-doc/action.md
+      - Agent Class: agent-doc/agent.md
+      - Image Rendering: agent-doc/rendering.md
