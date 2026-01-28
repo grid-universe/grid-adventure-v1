@@ -19,6 +19,7 @@ nav:
   - Agent Documentation:
       - Introduction: agent-doc/introduction.md
       - Grid Adventure Environment: agent-doc/grid_adventure_environment.md
+      - Image Rendering: agent-doc/rendering.md
       - Game Representation:
           - Overview: agent-doc/game_representation.md
           - GridState: agent-doc/gridstate.md
@@ -26,4 +27,3 @@ nav:
           - State: agent-doc/state.md
       - Action Class: agent-doc/action.md
       - Agent Class: agent-doc/agent.md
-      - Image Rendering: agent-doc/rendering.md

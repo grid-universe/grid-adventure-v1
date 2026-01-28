@@ -19,5 +19,5 @@ Note: For more details about `ImageObservation` class and `GridState` class, ple
 |--------|---------|-------------|
 | `GridAdventureEnv.reset(seed, options)` | `tuple[Observation, dict]` | Resets the internal game state and returns the game representation|
 | `GridAdventureEnv.step(action)` | `tuple[Observation, float, bool, bool, dict]` | Applies one action, and returns the game representation |
-| `GridAdventureEnv.render()` | `PILImage` or `None` | Renders the current state |
+| `GridAdventureEnv.render()` | `PILImage` or `None` | Renders the current state. Refer to [Image Rendering](../agent-doc/rendering.md) |
 | `GridAdventureEnv.close()` | `None` | Releases resources |
