@@ -26,3 +26,4 @@ nav:
           - State: agent-doc/state.md
       - Action Class: agent-doc/action.md
       - Agent Class: agent-doc/agent.md
+      - Image Rendering: agent-doc/rendering.md

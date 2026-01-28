@@ -1,6 +1,8 @@
 
 # ImageObservation Representation
-The ImageObservation representation is created by the Grid Adventure V1 game engine. It contains a 3D image array with additional information in a dictionary.
+The ImageObservation representation is created by Grid Adventure. It contains a 3D image array with additional information in a dictionary.
+
+For how the rules on how the image is rendered, refer to [Image Rendering](rendering.md).
 
 ## ImageObservation Attribute Hierarchy
 The ImageObservation Class represents the game snapshot as a dictionary with the following hierarchy.
