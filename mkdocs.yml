@@ -1,4 +1,4 @@
-site_name: Grid-Adventure1 Documentation
+site_name: Grid-Adventure V1 Documentation
 
 theme:
   name: material
@@ -10,7 +10,7 @@ markdown_extensions:
       anchor_linenums: true
   - pymdownx.superfences
 nav:
-  - Home: index.md
+  - Introduction: index.md
   - Player Guide:
       - Introduction: player-guide/introduction.md
       - Entities: player-guide/entities.md
