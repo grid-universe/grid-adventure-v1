@@ -3,7 +3,7 @@
 Grid Adventure V1 operates as a turn based game. Players are supplied with a snapshot of a turn of the game. Players then return an action, which is then used to generate the snapshot of the game after the action is made.
 
 ## Representation types
-There are 3 ways for a Game Snapshot to be represented.
+There are three representations of a game snapshot.
 
 | Representation Type | Description |
 | --- | --- |

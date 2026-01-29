@@ -141,7 +141,9 @@ When the Agent occupies the same cell as a collectible item:
 ![Agent Overlapping with collectible](../assets/rendering_agent_collectible.png)
 
 #### Agent with background entities
-When the Agent occupies the same cell as a background entity (lava, unlocked door, exit):
+`Floor`, `Lava`, `Exit`, and `UnlockedDoor` are background entities.
+
+When the Agent occupies the same cell as a background entity:
 
 - The background entity remains visible
 - The Agent is rendered **in front** of it
