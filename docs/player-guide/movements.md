@@ -30,7 +30,7 @@ The example shows the agent pushing the box aside to be able to reach the exit t
 
 ![Push_Box](../assets/push_box.gif)
 
-## Powerup-Speed
+## Speed Powerup
 
 Speed allows the agent to move 2 tiles in 1 turn. It lasts for 5 turns.
 
@@ -38,7 +38,7 @@ The example shows the agent movement once boots are picked up. Note that walls c
 
 ![Speed_Movement](../assets/boots_movement.gif)
 
-## Powerup-Shield
+## Shield Powerup
 
 Shield allows the agent to move through lava without taking damage. It has 5 uses.
 
@@ -50,7 +50,7 @@ In order to reach the exit, the agent can collect the shield powerup which allow
 
 ![Shield_movement](../assets/lava_2.gif)
 
-## Powerup-Phasing
+## Phasing Powerup
 
 Phasing powerup allows the agent to move through objects such as walls, doors and boxes. It lasts for 5 turns.
 

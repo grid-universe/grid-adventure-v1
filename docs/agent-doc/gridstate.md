@@ -60,6 +60,9 @@ There are a total of 14 entities that can be present on the grid. To view the ap
 
 All entities have an `appearance.name` attribute, which is a string describing the entity. It can be used to determine the entities present in each cell of the grid. Each entity below is given with its entity class name as well as appearance name in brackets.
 
+!!!note 
+    When rendering the grid, each entity’s **appearance name** is used to determine which image to display. By default, images are loaded from the `DEFAULT_ASSET_ROOT` defined in `grid_adventure.rendering`, which provides public assets from Grid Adventure V1. A mapping from appearance name is also defined as `IMAGE_MAP` in the same package.
+
 **[AgentEntity](../player-guide/entities.md#agent)** (`"human"`)
 
 This is the entity controlled by the user. The Agent contains additional attributes and methods.
@@ -86,9 +89,9 @@ This is the entity controlled by the user. The Agent contains additional attribu
 
 **[KeyEntity](../player-guide/entities.md#key)** (`"key"`)
 
-**[LockedDoorEntity](../player-guide/entities.md#door)** (`"door"`)
+**[LockedDoorEntity](../player-guide/entities.md#door)** (`"locked"`)
 
-**[UnlockedDoorEntity](../player-guide/entities.md#door)**
+**[UnlockedDoorEntity](../player-guide/entities.md#door)** (`"opened"`)
 
 **[SpeedPowerUpEntity](../player-guide/entities.md#speed-powerup)** (`"boots"`)
 
