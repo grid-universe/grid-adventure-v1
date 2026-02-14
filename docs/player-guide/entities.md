@@ -73,7 +73,7 @@ Powerups may also appear on the grid and can be picked up by the agent. They pro
 
 <a name="turn-limit-anchor"></a>
 !!! info "Turn limit"
-    Powerups with a turn limit count down after every turn. The effect expires when the limit reaches 0. If the agent picks up a duplicate powerup, both will count down simultaneously. Essentially, both power up with exist simultaneously, with each having its turn limit tick down. In the case of stacking effects, effect of the power ups would stack unless they are duplicated turn limit effects. For example, with 2 Speed PowerUps, both will decrease their turn limit together, yet the effect is not stacked.
+    Powerups with a turn limit count down after every turn. The effect expires when the limit reaches 0. If the agent picks up a duplicate powerup, both will count down simultaneously. Essentially, both Powerups will exist simultaneously, with each having its turn limit tick down. In the case of stacking effects, effect of the Powerups would stack unless they are duplicated turn limit Powerups. For example, with 2 Speed PowerUps, both will decrease their turn limit together, yet the effect is not stacked.
 
 <a name="usage-limit-anchor"></a>
 !!! info "Usage limit"
