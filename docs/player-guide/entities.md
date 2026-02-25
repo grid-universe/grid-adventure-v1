@@ -73,11 +73,11 @@ Powerups may also appear on the grid and can be picked up by the agent. They pro
 
 <a name="turn-limit-anchor"></a>
 !!! info "Turn limit"
-    Powerups with a turn limit count down after every turn. The effect expires when the limit reaches 0. If the agent picks up a duplicate powerup, both will count down simultaneously. Essentially, the turn limit is reset when the second powerup is picked up.
+    Powerups with a turn limit count down after every turn. The effect expires when the limit reaches 0. If the agent picks up a multiple instances of the same Powerup, all instances will count down simultaneously. Essentially, all Powerups will be active simultaneously, with each having its turn limit tick down.
 
 <a name="usage-limit-anchor"></a>
 !!! info "Usage limit"
-    Powerups with a usage limit count down only when used. It expires when the usage limit reaches 0. If a duplicate is picked up, only one instance is used at any moment.
+    Powerups with a usage limit count down only when used. They expire when the limit is reached. If there are multiple instances of the same powerup, only one is used at a time.
 
 
 ### Speed Powerup
@@ -87,7 +87,7 @@ Powerups may also appear on the grid and can be picked up by the agent. They pro
 The speed powerup allows the agent to move 2 tiles in 1 turn. It has a [turn limit](#turn-limit-anchor) of 5. Note that the agent can still be blocked by any objects in its path.
 
 !!! note "Stacking"
-    Even if the agent has 2 active speed powerups, it is still only able to move 2 tiles in 1 turn.
+    Even if the agent possesses multiple active speed powerups, it is still limited to moving two tiles in a single turn.
 
 ### Shield Powerup
 
