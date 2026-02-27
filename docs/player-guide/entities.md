@@ -55,6 +55,10 @@ A locked door blocks the agent from moving past it. To unlock a door, the agent 
 ![Unlocked_Door](../assets/unlocked_doors.png)
 
 
+!!! note "Multiple keys and doors"
+    If the player has multiple keys and there are multiple locked doors on the player’s current tile and/or on adjacent tiles, the Use Key action will attempt to unlock doors in the following order: current tile, then left, right, up, and down. Each door unlocked consumes one key, and unlocking stops when the player has no keys remaining. The total number of doors unlocked cannot exceed the number of keys the player has.
+
+
 ## Box
 
 ![Box](../assets/boxes.png)
