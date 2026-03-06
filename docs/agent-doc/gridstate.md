@@ -58,10 +58,26 @@ Note: `obj` is of class `BaseEntity`, parent class of all Entities. For more det
 ### Entity List
 There are a total of 14 entities that can be present on the grid. To view the appearance and interactions between the entities, refer to the [Player Guide](../player-guide/entities.md).
 
-All entities have an `appearance.name` attribute, which is a string describing the entity. It can be used to determine the entities present in each cell of the grid. Each entity below is given with its entity class name as well as appearance name in brackets.
+All entities have an `appearance.name` attribute used for rendering. To identify entity types programmatically, use `isinstance` with the entity class. Each entity below is given with its entity class name as well as appearance name in brackets.
 
 !!!note 
     When rendering the grid, each entity’s **appearance name** is used to determine which image to display. By default, images are loaded from the `DEFAULT_ASSET_ROOT` defined in `grid_adventure.rendering`, which provides public assets from Grid Adventure V1. A mapping from appearance name is also defined as `IMAGE_MAP` in the same package.
+
+Use `isinstance` to check the type of any entity in the grid:
+
+```python
+from grid_adventure.entities import WallEntity, CoinEntity, GemEntity, KeyEntity
+
+for entity in grid[x][y]:
+    if isinstance(entity, WallEntity):
+        print("Wall")
+    elif isinstance(entity, CoinEntity):
+        print("Coin")
+    elif isinstance(entity, GemEntity):
+        print("Gem")
+    elif isinstance(entity, KeyEntity):
+        print("Key")
+```
 
 **[AgentEntity](../player-guide/entities.md#agent)** (`"human"`)
 
@@ -89,9 +105,20 @@ This is the entity controlled by the user. The Agent contains additional attribu
 
 **[KeyEntity](../player-guide/entities.md#key)** (`"key"`)
 
-**[LockedDoorEntity](../player-guide/entities.md#door)** (`"locked"`)
+**[LockedDoorEntity](../player-guide/entities.md#door)** (`"door"`) / **[UnlockedDoorEntity](../player-guide/entities.md#door)** (`"door"`)
 
-**[UnlockedDoorEntity](../player-guide/entities.md#door)** (`"opened"`)
+!!! note "Distinguishing door states"
+    Both `LockedDoorEntity` and `UnlockedDoorEntity` share the appearance name `"door"`. Use `isinstance` to distinguish them:
+
+    ```python
+    from grid_adventure.entities import LockedDoorEntity, UnlockedDoorEntity
+
+    for entity in grid[x][y]:
+        if isinstance(entity, LockedDoorEntity):
+            print("Locked door")
+        elif isinstance(entity, UnlockedDoorEntity):
+            print("Unlocked door")
+    ```
 
 **[SpeedPowerUpEntity](../player-guide/entities.md#speed-powerup)** (`"boots"`)
 
