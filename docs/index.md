@@ -14,7 +14,7 @@ In one turn, the agent takes exactly one **action**: move to an adjacent tile (u
 
 Scoring works as follows:
 
-- Most actions give a reward of **-3**. The final action that wins the game does not.
+- All actions except the final action give a reward of **-3**. The final action gives no reward.
 - Each coin collected gives a reward of **+5**.
 
 ## The objects
